@@ -1,0 +1,37 @@
+services:
+
+  centos7:
+    image: centos
+    container_name: centos7
+    networks: 
+      my_net:
+        ipv4_address: 192.168.2.10
+    tty: true
+
+  ubuntu:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: ubuntu
+    networks: 
+      my_net:
+        ipv4_address: 192.168.2.11
+    tty: true
+
+  fedora:
+    image: pycontribs/fedora
+    container_name: fedora
+    networks: 
+      my_net:
+        ipv4_address: 192.168.2.12
+    tty: true
+
+networks:
+
+  my_net:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 192.168.2.0/24
+         gateway: 192.168.2.254
+    

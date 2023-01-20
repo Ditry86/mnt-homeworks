@@ -8,3 +8,9 @@
       - name: Print fact
         debug:
           msg: "{{ some_fact }}"
+  - name: Print any fedora vars
+    hosts: fed
+    tasks:  
+      - name: Print fedora var
+        debug:
+          msg: "{{ any_variable }}"
